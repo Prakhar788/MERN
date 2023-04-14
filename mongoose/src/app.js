@@ -153,4 +153,4 @@ const deleteDocument=async(_id)=>{
    }
 }
 
-deleteDocument("64392a91246a3953bec8c254")
+//deleteDocument("64392a91246a3953bec8c254")
