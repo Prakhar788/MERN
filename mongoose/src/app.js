@@ -42,14 +42,22 @@ const Playlist=new mongoose.model("Playlist",playlistSchema);
 
 const createDocument=async()=>{
 try{
-    const reactPlaylist=new Playlist({
+    const nodePlaylist=new Playlist({
         name:"NodeJs",
         ctype:"Frontend",
         videos:"100",
        author:"Prakhar",
        active:true   
     })
-    const result =await  reactPlaylist.save();
+    const jsPlaylist=new Playlist({
+        name:"Js",
+        ctype:"Frontend",
+        videos:"100",
+       author:"Prakhar",
+       active:true   
+    })
+    // const result =await  reactPlaylist.save();
+    const result =await  Playlist.insertMany([nodePlaylist,jsPlaylist]);
     console.log(result);
 }catch(err){
     console.log(err);
@@ -58,4 +66,9 @@ try{
 
 }
 
-createDocument();
+//createDocument();
+const getDocument=async()=>{
+    const result=await Playlist.find({ctype:"Frontend"}).select({name:1}).limit(1);//to show only name feild and limit to limit no. of document
+    console.log(result);
+}
+getDocument();
