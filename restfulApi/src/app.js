@@ -1,11 +1,15 @@
 const express=require('express');
 require("./db/conn");
 const Student=require("./models/students");
+const studentRouter=require("./routers/student");//to make app.js clean
 const app=express();
 const port=process.env.PORT || 3000;
-// app.get("/",(req,res)=>{
-//     res.send("Hello Guys");
-// })
+
+
+
+
+//we need to register our router
+app.use(studentRouter)//to move operations to different files.
 
 app.use(express.json());
 
